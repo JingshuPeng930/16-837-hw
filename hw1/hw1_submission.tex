@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[letterpaper, margin=0.95in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{titleps}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newpagestyle{ruled}
+{\sethead{CMU 16-831}{Intro to Robot Learning}{Fall 2026}\headrule
+  \setfoot{}{}{}}
+\pagestyle{ruled}
+\renewcommand\makeheadrule{\color{black}\rule[-.75\baselineskip]{\linewidth}{0.4pt}}
+
+\begin{document}
+
+\begin{center}
+    {\Large Assignment 1: Imitation Learning} \\
+    \vspace{.25cm}
+    \textbf{Andrew ID:} \texttt{YOUR ID} \\
+    \textbf{Collaborators:} \texttt{YOUR COLLABORATORS}
+\end{center}
+
+% \textit{Generative AI tools such as ChatGPT are viewed as collaborators in this course, acknowledge accordingly.}
+
+\section{Behavioral Cloning (10 pt)}
+
+\subsection{Part 2 (1.5 pt)}
+\begin{table}[!h]
+  \centering
+  \caption{Mean and standard deviation of expert return over two trajectories, for each environment.}
+  \begin{tabular}{cccccc}
+    \toprule
+    Metric/Env & Ant-v2 & Humanoid-v2 & Walker2d-v2 & Hopper-v2 & HalfCheetah-v2 \\
+    \midrule
+    Mean  & xxx & xxx & xxx & xxx & xxx \\
+    Std.  & xxx & xxx & xxx & xxx & xxx \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:p2}
+\end{table}
+
+\subsection{Part 3 (5 pt)}
+\begin{table}[htbp]
+  \centering
+  \caption{BC vs.\ expert return. List the environment you chose and the hyperparameters (network size, amount of data, training iterations, \texttt{eval\_batch\_size}, etc.) here.}
+  \begin{tabular}{ccccc}
+    \toprule
+    Env   & \multicolumn{2}{c}{Ant-v2} & \multicolumn{2}{c}{[Another Env]} \\
+    \midrule
+    Metric & Mean  & Std.  & Mean  & Std. \\
+    Expert & xxx & xxx & xxx & xxx \\
+    BC    & xxx & xxx & xxx & xxx \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:p3}
+\end{table}
+
+\subsection{Part 4 (3 pt)}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{figure_placeholder.pdf}
+  \caption{BC agent's performance vs.\ the value of ??? in the ??? environment. State the hyperparameter and a brief rationale for why you chose it.}
+  \label{fig:p4}
+\end{figure}
+
+\subsection{Part 5 (0.5 pt)}
+Find one robotics paper from the last $\sim$3 years that uses imitation learning (i.e. behavior cloning) as the primary methodology. In a short paragraph (4-5 sentences): (i) cite it, (ii) say what robot task is being cloned and where the expert data comes from and (iii) name a main IL risk from this homework and whether that still applies to the paper's methodology. A few sentences is enough; this is not meant to be an extensive literature review.
+
+\textit{Write your paragraph here.}
+
+
+\newpage
+\section{DAgger (5 pt)}
+
+\subsection{Part 2 (5 pt)}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\columnwidth]{figure_placeholder.pdf}
+  \caption{DAgger learning curves (mean return vs.\ iteration, with error bars). Ant-v2 on the left and [Another Env] on the right. Include expert and BC performance as horizontal lines, and note network architecture, amount of data, etc.}
+  \label{fig:p5}
+\end{figure}
+
+
+\end{document}
