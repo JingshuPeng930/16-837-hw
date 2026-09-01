@@ -17,7 +17,7 @@ You can run this code locally on your own machine or on Google Colab. We recomme
 1. **Local option:** If you choose to run locally, you will need to install MuJoCo and some Python packages; see [installation.md](installation.md) for instructions.
 2. **Colab:** The first few sections of the notebook will install all required dependencies and pull the repo. You can try out the Colab option by clicking the badge below:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LeCAR-Lab/16831-F25-HW/blob/main/hw1/rob831/scripts/run_hw1.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LeCAR-Lab/16831-F26-HW/blob/main/hw1/rob831/scripts/run_hw1.ipynb)
 
 Note: If running in colab and you pull the repo again or install new packages, you may need to restart the runtime and reconnect before being able to run.
 
