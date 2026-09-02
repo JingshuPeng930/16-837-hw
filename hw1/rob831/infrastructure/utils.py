@@ -7,7 +7,8 @@ import time
 def sample_trajectory(env, policy, max_path_length, render=False, render_mode=('rgb_array')):
 
     # initialize env for the beginning of a new rollout
-    ob = TODO  # HINT: should be the output of resetting the env [OK]
+    reset_result = env.reset()
+    ob = reset_result[0] if isinstance(reset_result, tuple) else reset_result
 
     # init vars
     obs, acs, rewards, next_obs, terminals, image_obs = [], [], [], [], [], []
@@ -27,21 +28,25 @@ def sample_trajectory(env, policy, max_path_length, render=False, render_mode=('
 
         # use the most recent ob to decide what to do
         obs.append(ob)
-        ac = TODO # HINT: query the policy's get_action function [OK]
+        ac = policy.get_action(ob)
         ac = ac[0]
         acs.append(ac)
 
         # take that action and record results
-        ob, rew, done, _ = env.step(ac)
+        step_result = env.step(ac)
+        if len(step_result) == 5:
+            ob, rew, terminated, truncated, _ = step_result
+            done = terminated or truncated
+        else:
+            ob, rew, done, _ = step_result
 
         # record result of taking that action
         steps += 1
         next_obs.append(ob)
         rewards.append(rew)
 
-        # TODO end the rollout if the rollout ended
         # HINT: rollout can end due to done, or due to max_path_length
-        rollout_done = TODO  # HINT: this is either 0 or 1
+        rollout_done = done or steps >= max_path_length
         terminals.append(rollout_done)
 
         if rollout_done:
@@ -61,7 +66,9 @@ def sample_trajectories(env, policy, min_timesteps_per_batch, max_path_length, r
     paths = []
     while timesteps_this_batch < min_timesteps_per_batch:
 
-        TODO
+        path = sample_trajectory(env, policy, max_path_length, render, render_mode)
+        paths.append(path)
+        timesteps_this_batch += get_pathlength(path)
 
     return paths, timesteps_this_batch
 
@@ -74,7 +81,9 @@ def sample_n_trajectories(env, policy, ntraj, max_path_length, render=False, ren
     """
     sampled_paths = []
 
-    TODO
+    for _ in range(ntraj):
+        path = sample_trajectory(env, policy, max_path_length, render, render_mode)
+        sampled_paths.append(path)
 
     return sampled_paths
 
@@ -117,4 +126,3 @@ def convert_listofrollouts(paths, concat_rew=True):
 
 def get_pathlength(path):
     return len(path["reward"])
-
