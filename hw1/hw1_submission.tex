@@ -20,8 +20,8 @@
 \begin{center}
     {\Large Assignment 1: Imitation Learning} \\
     \vspace{.25cm}
-    \textbf{Andrew ID:} \texttt{YOUR ID} \\
-    \textbf{Collaborators:} \texttt{YOUR COLLABORATORS}
+    \textbf{Andrew ID:} \texttt{jingshup} \\
+    \textbf{Collaborators:} \texttt{None}
 \end{center}
 
 % \textit{Generative AI tools such as ChatGPT are viewed as collaborators in this course, acknowledge accordingly.}
@@ -62,15 +62,15 @@
 \subsection{Part 4 (3 pt)}
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=0.5\columnwidth]{figure_placeholder.pdf}
-  \caption{BC agent's performance vs.\ the value of ??? in the ??? environment. State the hyperparameter and a brief rationale for why you chose it.}
+  \includegraphics[width=0.65\columnwidth]{bc_layers_sweep.pdf}
+  \caption{BC agent's performance vs.\ the number of hidden layers on Hopper-v2. I swept depth because model capacity can affect how well behavior cloning fits the expert action labels, and Hopper-v2 was chosen because the BC baseline had a large gap from expert performance. Other settings were fixed to hidden size 64, learning rate $5\times 10^{-3}$, batch size 1000, train batch size 100, \texttt{eval\_batch\_size}=1000, and 1000 training steps.}
   \label{fig:p4}
 \end{figure}
 
 \subsection{Part 5 (0.5 pt)}
 Find one robotics paper from the last $\sim$3 years that uses imitation learning (i.e. behavior cloning) as the primary methodology. In a short paragraph (4-5 sentences): (i) cite it, (ii) say what robot task is being cloned and where the expert data comes from and (iii) name a main IL risk from this homework and whether that still applies to the paper's methodology. A few sentences is enough; this is not meant to be an extensive literature review.
 
-\textit{Write your paragraph here.}
+Chi et al.~\cite{chi2023diffusionpolicy} propose Diffusion Policy, a visuomotor imitation learning method that represents a robot policy as a conditional denoising diffusion process over action sequences. The cloned tasks are robot manipulation behaviors across simulated and real-world benchmarks, where expert data is provided as demonstration trajectories of observations and actions. The method is still trained in a behavior-cloning style from offline demonstrations, but the diffusion formulation helps model multimodal action distributions and high-dimensional action sequences. A main risk from this homework is compounding error from distribution shift: when the learned policy enters states not well covered by the demonstrations, small action errors can accumulate into poor rollouts. This risk still applies to Diffusion Policy because it is trained from offline demonstrations, although action-sequence prediction and receding-horizon execution can make it more robust than simple one-step BC.
 
 
 \newpage
@@ -84,5 +84,13 @@ Find one robotics paper from the last $\sim$3 years that uses imitation learning
   \label{fig:p5}
 \end{figure}
 
+\begin{thebibliography}{1}
+
+\bibitem{chi2023diffusionpolicy}
+Cheng Chi, Zhenjia Xu, Siyuan Feng, Eric Cousineau, Yilun Du, Benjamin Burchfiel, Russ Tedrake, and Shuran Song.
+\newblock Diffusion Policy: Visuomotor Policy Learning via Action Diffusion.
+\newblock Robotics: Science and Systems (RSS), 2023.
+
+\end{thebibliography}
 
 \end{document}
