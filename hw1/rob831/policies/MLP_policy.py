@@ -82,7 +82,10 @@ class MLPPolicy(BasePolicy, nn.Module, metaclass=abc.ABCMeta):
 
         observation = ptu.from_numpy(observation.astype(np.float32))
         action_distribution = self.forward(observation)
-        action = action_distribution.sample()
+        if self.discrete:
+            action = action_distribution.sample()
+        else:
+            action = action_distribution.mean
         return ptu.to_numpy(action)
 
     # update/train this policy
