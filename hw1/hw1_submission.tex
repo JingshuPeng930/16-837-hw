@@ -36,8 +36,8 @@
     \toprule
     Metric/Env & Ant-v2 & Humanoid-v2 & Walker2d-v2 & Hopper-v2 & HalfCheetah-v2 \\
     \midrule
-    Mean  & xxx & xxx & xxx & xxx & xxx \\
-    Std.  & xxx & xxx & xxx & xxx & xxx \\
+    Mean  & 4669.79 & 10515.10 & 5508.69 & 3779.56 & 4207.66 \\
+    Std.  & 138.48 & 103.28 & 82.07 & 0.44 & 5.71 \\
     \bottomrule
   \end{tabular}
   \label{tab:p2}
@@ -46,14 +46,14 @@
 \subsection{Part 3 (5 pt)}
 \begin{table}[htbp]
   \centering
-  \caption{BC vs.\ expert return. List the environment you chose and the hyperparameters (network size, amount of data, training iterations, \texttt{eval\_batch\_size}, etc.) here.}
+  \caption{BC vs.\ expert return. For BC, we used 2 hidden layers of size 64, learning rate $5\times 10^{-3}$, 1000 training steps, batch size 1000, train batch size 100, and \texttt{eval\_batch\_size}=1000.}
   \begin{tabular}{ccccc}
     \toprule
-    Env   & \multicolumn{2}{c}{Ant-v2} & \multicolumn{2}{c}{[Another Env]} \\
+    Env   & \multicolumn{2}{c}{Ant-v2} & \multicolumn{2}{c}{Hopper-v2} \\
     \midrule
     Metric & Mean  & Std.  & Mean  & Std. \\
-    Expert & xxx & xxx & xxx & xxx \\
-    BC    & xxx & xxx & xxx & xxx \\
+    Expert & 4669.79 & 138.48 & 3779.56 & 0.44 \\
+    BC    & 4672.12 & 0.00 & 872.94 & 59.15 \\
     \bottomrule
   \end{tabular}
   \label{tab:p3}
@@ -79,8 +79,8 @@ Find one robotics paper from the last $\sim$3 years that uses imitation learning
 \subsection{Part 2 (5 pt)}
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=\columnwidth]{figure_placeholder.pdf}
-  \caption{DAgger learning curves (mean return vs.\ iteration, with error bars). Ant-v2 on the left and [Another Env] on the right. Include expert and BC performance as horizontal lines, and note network architecture, amount of data, etc.}
+  \includegraphics[width=\columnwidth]{dagger_curves.pdf}
+  \caption{DAgger learning curves on Ant-v2 and Hopper-v2 over 10 iterations. The dashed lines show expert performance and the dotted lines show the BC baseline. We used a 2-layer MLP with hidden size 64, learning rate $5\times 10^{-3}$, batch size 1000, train batch size 100, \texttt{eval\_batch\_size}=1000, and 1000 policy updates per iteration.}
   \label{fig:p5}
 \end{figure}
 
