@@ -8,7 +8,7 @@ from tensorboard.backend.event_processing.event_accumulator import EventAccumula
 
 
 ROOT = Path(__file__).resolve().parent
-DATA = ROOT / "data"
+DATA = ROOT / "data" if (ROOT / "data").exists() else ROOT / "run_logs"
 FIGURES = ROOT / "figures"
 
 

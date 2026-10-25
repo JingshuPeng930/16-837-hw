@@ -5,7 +5,7 @@ TensorBoard run logs for Questions 1--3.
 
 ## Setup
 
-From the homework 3 directory, install the provided requirements and package:
+From the extracted `submit` directory, install the provided requirements and package:
 
 ```bash
 pip install -r requirements.txt
@@ -17,11 +17,13 @@ pip install -e .
 Run the commands specified in the assignment handout. The included Q1 runs use
 `gamma=0.99`, target-network updates every 2,000 steps, and epsilon decay over
 the first 90,000 steps. They retain the required experiment names. To
-regenerate the report figures from logs, run:
+regenerate the report figures from the included logs, run:
 
 ```bash
 python plot_hw3.py
 ```
+
+The script writes the three PDF figures to `figures/`.
 
 No special code changes or extra Python dependencies beyond the provided
 requirements are needed. On macOS, InvertedPendulum also requires the native

@@ -71,11 +71,12 @@ backgroundcolor = \color{light-yellow}
 \section{Question 1: DQN and DDQN (LunarLander-v3) - [7.5 points]}
 \begin{answer}[title=Question 1,height=9.5cm,width=\linewidth]
 \centering
-\includegraphics[height=7.4cm,width=\linewidth,keepaspectratio]{figures/q1_dqn_ddqn.pdf}
+\includegraphics[height=7.0cm,width=\linewidth,keepaspectratio]{figures/q1_dqn_ddqn.pdf}
 \par\smallskip
 \footnotesize Mean performance across seeds 1--3; shading shows one standard deviation.
 Both methods use $\gamma=0.99$, target updates every 2,000 steps, and epsilon
-decay from 1.0 to 0.02 over the first 90,000 steps.
+decay from 1.0 to 0.02 over the first 90,000 steps. At 300,000 steps, DDQN
+averages 125.2 return versus 99.3 for DQN across three seeds.
 \end{answer}
 
 \section{Question 2: Actor-Critic (CartPole-v0) - [3.75 points]}
