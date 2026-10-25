@@ -14,9 +14,10 @@ pip install -e .
 
 ## Reproducing experiments
 
-Run the commands specified in the assignment handout. The included runs use the
-default hyperparameters and experiment names. To regenerate the report figures
-from logs, run:
+Run the commands specified in the assignment handout. The included Q1 runs use
+`gamma=0.99`, target-network updates every 2,000 steps, and epsilon decay over
+the first 90,000 steps. They retain the required experiment names. To
+regenerate the report figures from logs, run:
 
 ```bash
 python plot_hw3.py

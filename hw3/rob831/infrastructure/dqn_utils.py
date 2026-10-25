@@ -62,11 +62,11 @@ def get_env_kwargs(env_name):
             'q_func': create_lander_q_network,
             'replay_buffer_size': 50000,
             'batch_size': 32,
-            'gamma': 1.00,
+            'gamma': 0.99,
             'learning_starts': 1000,
             'learning_freq': 1,
             'frame_history_len': 1,
-            'target_update_freq': 3000,
+            'target_update_freq': 2000,
             'grad_norm_clipping': 10,
             'lander': True,
             'num_timesteps': 300000,
@@ -172,7 +172,7 @@ def lander_exploration_schedule(num_timesteps):
     return PiecewiseSchedule(
         [
             (0, 1),
-            (num_timesteps * 0.1, 0.02),
+            (num_timesteps * 0.3, 0.02),
         ], outside_value=0.02
     )
 
@@ -514,4 +514,3 @@ class MemoryOptimizedReplayBuffer(object):
         self.action[idx] = action
         self.reward[idx] = reward
         self.done[idx]   = done
-

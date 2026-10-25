@@ -1,6 +1,7 @@
 from collections import OrderedDict
 import pickle
 import os
+import random
 import sys
 import time
 
@@ -39,6 +40,7 @@ class RL_Trainer(object):
 
         # Set random seeds
         seed = self.params['seed']
+        random.seed(seed)
         np.random.seed(seed)
         torch.manual_seed(seed)
         ptu.init_gpu(
@@ -66,6 +68,7 @@ class RL_Trainer(object):
             self.best_mean_episode_reward = -float('inf')
 
         self.env.seed(seed)
+        self.env.action_space.seed(seed)
 
         # import plotting (locally if 'obstacles' env)
         if not(self.params['env_name']=='obstacles-rob831-v0'):

@@ -17,10 +17,10 @@ def event_file(prefix):
     for directory in DATA.glob(f"{prefix}_*"):
         events = list(directory.glob("events*"))
         if events:
-            candidates.append((max(p.stat().st_size for p in events), directory, events[0]))
+            candidates.append((directory.stat().st_mtime, events[0]))
     if not candidates:
         raise FileNotFoundError(f"No completed event log found for {prefix}")
-    return max(candidates)[2]
+    return max(candidates)[1]
 
 
 def scalars(prefix, tag, x_tag="Train_EnvstepsSoFar"):
